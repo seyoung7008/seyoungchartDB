@@ -36,7 +36,7 @@
                     android:ems="10"
                     android:id="@+id/editText2"
                     android:layout_weight="1"
-                    android:text="2016-01-01" />
+                    android:text="" />
 
             </LinearLayout>
 

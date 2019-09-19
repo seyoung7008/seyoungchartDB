@@ -61,6 +61,16 @@ public class MainActivity extends AppCompatActivity {
         Value_EditText = (EditText) findViewById(R.id.editText);
         Date_EditText = (EditText) findViewById(R.id.editText2);
 
+        SimpleDateFormat format1 = new SimpleDateFormat ( "yyyy-MM-dd");
+
+
+        Date time = new Date();
+
+        String time1 = format1.format(time);
+
+        Date_EditText.setText(time1);
+
+
         Save_Button = (Button) findViewById(R.id.button);
         Save_Button.setOnClickListener(new View.OnClickListener() {
             @Override
