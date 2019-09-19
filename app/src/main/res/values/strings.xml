@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Learn Android with Real Apps</string>
+    <string name="oil_price">Oil Price</string>
+    <string name="price_in_last_12_days">Price in last 12 days</string>
+</resources>
