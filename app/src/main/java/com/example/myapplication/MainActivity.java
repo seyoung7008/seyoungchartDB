@@ -152,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
         sum = sum / count;
 
 
-        Value1 += " 오늘의 몸무게 ! " + "\n";
+        Value1 += " 오늘의 몸무게 ! ";
         Today_Button.setText(Value1);
         Value2 = Integer.toString(sum);
-        Value2 += " kg 입니다 ! ";
+        Value2 += " kg 입니다 ! \n";
         ShowValue_TestView2.setText(Value2);
         cursor.close();
         sql.close();
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
                 + "HAVING member2.Testdate >= date('now','weekday 0', '-7 days', 'localtime') AND member2.Testdate <= date('now','weekday 0', '-1 days', 'localtime')"
                 + "ORDER BY MEMBER2.TESTDATE;", null);
 
-        String Value3 = "\r\n";
+        String Value3 = "";
 
         while (cursor.moveToNext()) {
             Value3 += cursor.getString(0) + "         " + cursor.getString(1) + "\r\n";
