@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         String Value1 = "";
         String Value2 = "";
         int sum = 0;
-        int count = 0;
+        int count = 1;
         while (cursor.moveToNext()) {
             Value1 = cursor.getString(2);
 
@@ -159,11 +159,21 @@ public class MainActivity extends AppCompatActivity {
             sum += Integer.parseInt(Value2);
             count++;
         }
-        sum = sum / count;
+        if(count == 1){
+            sum = sum / count;  //db에 오늘날짜의 데이터값 없으면 중지되는 상황발생 못고침.
+            Value1 = time1;
+            Value1 += " 오늘의 몸무게 ! ";
+            Today_Button.setText(Value1);
+        }else{
+            count = count-1;
+            sum = sum/count;
+            Value1 += " 오늘의 몸무게 ! ";
+            Today_Button.setText(Value1);
+        }
 
 
-        Value1 += " 오늘의 몸무게 ! ";
-        Today_Button.setText(Value1);
+
+
         Value2 = Integer.toString(sum);
         Value2 += " kg 입니다 ! \n";
         ShowValue_TestView2.setText(Value2);
@@ -246,6 +256,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
         drawLineChart();
     }
 
@@ -279,18 +290,30 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Entry> getDataSet() {
         List<Entry> lineEntries = new ArrayList<Entry>();
+       // lineEntries.add(new Entry(0, 1));
+
+        sql = testDB.getReadableDatabase();
+    Cursor cursor;
+        cursor = sql.rawQuery("SELECT member2.Testdate, IFNULL(AVG(Member.lux_val),0) "
+                + "FROM Member2 LEFT OUTER JOIN member ON Member.Testdate = member2.Testdate "
+                + "GROUP BY MEMBER2.TESTDATE "
+                + "HAVING member2.Testdate >= date('now','weekday 0', '-7 days', 'localtime') AND member2.Testdate <= date('now','weekday 0', '-1 days', 'localtime')"
+                + "ORDER BY MEMBER2.TESTDATE;", null);
+        String Value1 = "";
+        String Value2 = "";
+        int sum1,sum2 = 0;
         lineEntries.add(new Entry(0, 1));
-        lineEntries.add(new Entry(1, 2));
-        lineEntries.add(new Entry(2, 3));
-        lineEntries.add(new Entry(3, 4));
-        lineEntries.add(new Entry(4, 2));
-        lineEntries.add(new Entry(5, 3));
-        lineEntries.add(new Entry(6, 1));
-        lineEntries.add(new Entry(7, 5));
-        lineEntries.add(new Entry(8, 7));
-        lineEntries.add(new Entry(9, 6));
-        lineEntries.add(new Entry(10, 4));
-        lineEntries.add(new Entry(11, 5));
+      /*  while (cursor.moveToNext()) {
+            Value1 = cursor.getString(0);
+            sum1 = Integer.parseInt(Value1);
+            Value2 = cursor.getString(1);
+            sum2 = Integer.parseInt(Value2);
+
+            lineEntries.add(new Entry(sum1, sum2));
+        }*/
+     /*   while (cursor.moveToNext()) {
+            Value1 += cursor.getString(0) + "         " + cursor.getString(1) + "\r\n";
+        }*/
         return lineEntries;
     }
 }
