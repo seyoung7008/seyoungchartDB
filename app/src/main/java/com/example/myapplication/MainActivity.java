@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             count++;
         }
         if(count == 1){
-            sum = sum / count;  //db에 오늘날짜의 데이터값 없으면 중지되는 상황발생 못고침.
+            sum = sum / count;  //db에 오늘날짜의 데이터값 없으면 중지되는 상황발생 못고침. ㅇ 고침 킼
             Value1 = time1;
             Value1 += " 오늘의 몸무게 ! ";
             Today_Button.setText(Value1);
@@ -302,7 +302,13 @@ public class MainActivity extends AppCompatActivity {
         String Value1 = "";
         String Value2 = "";
         int sum1,sum2 = 0;
-        lineEntries.add(new Entry(0, 1));
+        lineEntries.add(new Entry(15, 3));
+        lineEntries.add(new Entry(16, 3));
+        lineEntries.add(new Entry(17, 4));
+        lineEntries.add(new Entry(18, 2));
+        lineEntries.add(new Entry(19, 3));
+        lineEntries.add(new Entry(20, 3));
+        lineEntries.add(new Entry(21, 4));
       /*  while (cursor.moveToNext()) {
             Value1 = cursor.getString(0);
             sum1 = Integer.parseInt(Value1);
