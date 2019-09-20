@@ -263,24 +263,24 @@ public class MainActivity extends AppCompatActivity {
     private void drawLineChart() {
         LineChart lineChart = findViewById(R.id.lineChart);
         List<Entry> lineEntries = getDataSet();
-        LineDataSet lineDataSet = new LineDataSet(lineEntries, getString(R.string.oil_price));
+        LineDataSet lineDataSet = new LineDataSet(lineEntries, getString(R.string.weight));
         lineDataSet.setAxisDependency(YAxis.AxisDependency.LEFT);
         lineDataSet.setHighlightEnabled(true);
         lineDataSet.setLineWidth(2);
-        lineDataSet.setColor(Color.RED);
-        lineDataSet.setCircleColor(Color.YELLOW);
-        lineDataSet.setCircleRadius(6);
-        lineDataSet.setCircleHoleRadius(3);
+        lineDataSet.setColor(R.color.point_pink);
+        lineDataSet.setCircleColor(R.color.buttonpress);
+        lineDataSet.setCircleRadius(4);
+        lineDataSet.setCircleHoleRadius(2);
         lineDataSet.setDrawHighlightIndicators(true);
         lineDataSet.setHighLightColor(Color.RED);
-        lineDataSet.setValueTextSize(12);
+        lineDataSet.setValueTextSize(7);
         lineDataSet.setValueTextColor(Color.DKGRAY);
         YAxis yAxisRight = lineChart.getAxisRight(); //Y축의 오른쪽면 설정
         yAxisRight.setDrawLabels(false);
         yAxisRight.setDrawAxisLine(false);
         yAxisRight.setDrawGridLines(false);
         XAxis xAxis = lineChart.getXAxis(); // x 축 설정
-      //  xAxis.setPosition(XAxis.XAxisPosition.TOP); //x 축 표시에 대한 위치 설정
+        //  xAxis.setPosition(XAxis.XAxisPosition.TOP); //x 축 표시에 대한 위치 설정
         //xAxis.setValueFormatter(new ChartXValueFormatter()); //X축의 데이터를 제 가공함. new ChartXValueFormatter은 Custom한 소스
         xAxis.setLabelCount(7, true); //X축의 데이터를 최대 몇개 까지 나타낼지에 대한 설정 5개 force가 true 이면 반드시 보여줌
 
@@ -288,8 +288,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         LineData lineData = new LineData(lineDataSet);
-        lineChart.getDescription().setText(getString(R.string.price_in_last_12_days));
-        lineChart.getDescription().setTextSize(12);
+        lineChart.getDescription().setText(getString(R.string.Change_of_weight_for_a_week));
+        lineChart.getDescription().setTextSize(10);
         lineChart.setDrawMarkers(true);
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         lineChart.animateY(1000);

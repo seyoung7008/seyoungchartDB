@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Seyoung DB and Chart</string>
-    <string name="oil_price"> weight </string>
-    <string name="price_in_last_12_days">Change of weight for a week</string>
+    <string name="weight"> weight </string>
+    <string name="Change_of_weight_for_a_week">Change of weight for a week</string>
 </resources>
